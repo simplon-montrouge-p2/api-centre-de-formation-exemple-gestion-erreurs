@@ -1,4 +1,7 @@
 const express = require("express");
+require("express-async-errors");
+
+const { OK } = require("../helpers/status_codes");
 
 const {
   recupererLesFormations
@@ -9,7 +12,7 @@ const formationsRouter = express.Router();
 formationsRouter.get("/", async (request, response) => {
   const formations = await recupererLesFormations();
 
-  response.status(200);
+  response.status(OK);
   response.json(formations);
 });
 
